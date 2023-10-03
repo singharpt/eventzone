@@ -45,7 +45,7 @@ const LocationEvents = ({ index }) => {
               key={event.id}
               id={event.id}
               title={event.name}
-              // date={event.date}
+              date={event.date}
               image={event.image}
             />
           ))

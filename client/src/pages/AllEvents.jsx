@@ -53,6 +53,7 @@ const AllEvents = () => {
               key={event.id}
               id={event.id}
               title={event.name}
+              date={event.date}
               image={event.image}
             />
           ))
