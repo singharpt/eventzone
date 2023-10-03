@@ -23,7 +23,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] An additional page shows all possible `Events` that the user can sort and filter by `Location`
-- [ ] `Events` display a countdown showing the time remaining before that event and appears with different formatting when the event has passed
+- [x] `Events` display a countdown showing the time remaining before that event and appears with different formatting when the event has passed
 
 The following **additional** features are implemented:
 
