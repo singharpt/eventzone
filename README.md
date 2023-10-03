@@ -1,4 +1,4 @@
-# WEB103 Project 3 - EventZone
+# EventZone
 
 Submitted by: **Arpit Singh**
 
