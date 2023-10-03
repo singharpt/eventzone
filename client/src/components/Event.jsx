@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/Event.css";
 
-const Event = (props) => {
-  const [event, setEvent] = useState(props);
+const Event = (event) => {
   const currentTime = Date.now();
   let eventTime = Date.parse(event.date);
   let remaining = eventTime - currentTime;
