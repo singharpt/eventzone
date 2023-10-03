@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import LocationsAPI from "../services/LocationsAPI";
 import unitygrid from "../assets/unitygrid.jpg";
 import "../css/Locations.css";
+import { Context } from "../components/ContextProvider";
+import { Link } from "react-router-dom";
 
 const Locations = () => {
-  const [locations, setLocations] = useState([]);
+  const { locations, setLocations } = useContext(Context);
   const [venueNames, setVenueNames] = useState({
     venue1: "",
     venue2: "",
@@ -12,33 +14,34 @@ const Locations = () => {
     venue4: "",
   });
 
+  const getLocations = async () => {
+    try {
+      const locationsData = await LocationsAPI();
+      setLocations(locationsData);
+      const venue = { venue1: "", venue2: "", venue3: "", venue4: "" };
+
+      locationsData &&
+        locationsData.forEach((element) => {
+          if (element.id === "1") {
+            venue.venue1 = element.name;
+          } else if (element.id === "2") {
+            venue.venue2 = element.name;
+          } else if (element.id === "3") {
+            venue.venue3 = element.name;
+          } else {
+            venue.venue4 = element.name;
+          }
+        });
+
+      setVenueNames(venue);
+      setListeners();
+    } catch (error) {
+      throw error;
+    }
+  };
+
   useEffect(() => {
-    (async () => {
-      try {
-        const locationsData = await LocationsAPI();
-
-        const venue = { venue1: "", venue2: "", venue3: "", venue4: "" };
-
-        locationsData &&
-          locationsData.forEach((element) => {
-            if (element.id === "1") {
-              venue.venue1 = element.name;
-            } else if (element.id === "2") {
-              venue.venue2 = element.name;
-            } else if (element.id === "3") {
-              venue.venue3 = element.name;
-            } else {
-              venue.venue4 = element.name;
-            }
-          });
-
-        setLocations(locationsData);
-        setVenueNames(venue);
-        setListeners();
-      } catch (error) {
-        throw error;
-      }
-    })();
+    getLocations();
   }, []);
 
   const setListeners = () => {
@@ -95,7 +98,7 @@ const Locations = () => {
           transform="matrix(0.48 0 0 0.48 0 0)"
         ></image>
 
-        <a href="/echolounge">
+        <Link to="/1">
           <polygon
             id="venue1"
             points="2.97,234.52 17.94,198.9 34.45,188.58 52.52,191.68 56.65,196.32 69.03,162.26 84,137.48 
@@ -103,9 +106,9 @@ const Locations = () => {
                 214.58,285.1 214.58,302.13 203.74,334.13 194.45,351.68 205.29,366.65 132.52,366.65 159.35,391.42 155.74,399.68 119.61,399.68 
                 86.06,399.68 62.84,399.68 25.16,399.68 0,397.61 "
           />
-        </a>
+        </Link>
 
-        <a href="/houseofblues">
+        <Link to="/2">
           <polygon
             id="venue2"
             name="venue2"
@@ -115,9 +118,9 @@ const Locations = () => {
                 529.42,194.26 540.77,197.35 540.77,169.48 552.13,167.94 556.77,149.87 566.06,156.06 566.06,193.74 577.42,211.81 577.42,238.65 
                 601.16,254.65 594.45,302.13 575.87,335.68 587.23,353.74 601.16,363.55 358.58,363.55 "
           />
-        </a>
+        </Link>
 
-        <a href="/pavilion">
+        <Link to="/3">
           <polygon
             id="venue3"
             name="venue3"
@@ -125,9 +128,9 @@ const Locations = () => {
             points="998.06,83.81 952.65,31.16 914.45,16.71 877.29,43.55 833.94,102.39 811.74,161.23 
                 796.77,241.23 802.97,303.16 833.94,353.23 871.61,385.23 954.71,385.23 1000.32,387.81 "
           />
-        </a>
+        </Link>
 
-        <a href="/americanairlines">
+        <Link to="/4">
           <polygon
             id="venue4"
             name="venue4"
@@ -135,7 +138,7 @@ const Locations = () => {
             points="625,291 615,305 608,318 625,338 637,354 622.5,358 673,363.5 751,363.5 793,363.5 
                 769,352 772,347 793,340 806,321 796.8,291 784,269 757,261 730,272 707,281 672,283 "
           />
-        </a>
+        </Link>
       </svg>
     </div>
   );
