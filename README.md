@@ -35,9 +35,9 @@ Here's a walkthrough of implemented required features:
 
 <img src='https://github.com/singharpt/eventzone/blob/main/gif_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-## Notes
+## How to run
 
-Describe any challenges encountered while building the app or any additional context you'd like to add.
+- In your terminal, run npm install to install dependencies, then npm run dev to run the web app.
 
 ## License
 
