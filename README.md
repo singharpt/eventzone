@@ -29,11 +29,11 @@ The following **additional** features are implemented:
 
 - [x] Instead of getting locations data from DB at multiple pages, I used useContext hook to create global states.
 
-## Video Walkthrough
+## Video Walkthrough (Wait for gif to load)
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/singharpt/eventzone/blob/main/gif_walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
